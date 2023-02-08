@@ -1,0 +1,41 @@
+﻿@using QuanLyFastFood.Models
+@{
+    ViewBag.Title = "Header";
+}
+<div class="header-left"></div>
+<div class="header-right">
+    <div class="dashboard-setting user-notification">
+        <div class="dropdown">
+            <a class="dropdown-toggle no-arrow" href="javascript:;" data-toggle="right-sidebar">
+                <i class="dw dw-settings2"></i>
+            </a>
+        </div>
+    </div>
+   
+    <div class="user-info-dropdown">
+        <div class="dropdown">
+            @if (Session["nguoidung"] != null)
+            {
+                NguoiDung nd = (NguoiDung)Session["nguoidung"];
+                <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                    <span class="user-icon">
+                        <img src="@nd.Anh" alt="">
+                    </span>
+                    <span class="user-name">@nd.Ten</span>
+                </a>
+            }
+            else
+            {
+                Response.Redirect(Url.Action("Login", "Default"));
+            }
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                <a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Profile</a>
+                <a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> Setting</a>
+                <a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> Help</a>
+                <a class="dropdown-item" href="@Url.Action("Logout","Default")"><i class="dw dw-logout"></i> Log Out</a>
+            </div>
+        </div>
+    </div>
+    
+</div>
+

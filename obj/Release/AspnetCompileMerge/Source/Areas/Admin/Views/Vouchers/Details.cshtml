@@ -1,0 +1,85 @@
+﻿@model QuanLyFastFood.Models.Voucher
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="pd-ltr-20 xs-pd-20-10">
+    <div class="min-height-200px">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="title">
+                        <h4>Xem voucher</h4>
+                    </div>
+                    <nav aria-label="breadcrumb" role="navigation">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="@Url.Action("Index", "Default")">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Xem voucher</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- Default Basic Forms Start -->
+        <div class="pd-20 card-box mb-30">
+            <div class="clearfix">
+                <div class="pull-left">
+                    <h4 class="text-blue h4">Xem voucher</h4>
+                </div>
+            </div>
+            <div class="form-group row">
+                <b class="col-sm-12 col-md-2 col-form-label">Mã voucher</b>
+                <div class="col-sm-12 col-md-10 col-form-label">
+                    @Html.DisplayFor(model => model.MaVoucher)
+                </div>
+            </div>
+            <div class="form-group row">
+                <b class="col-sm-12 col-md-2 col-form-label">Mô tả</b>
+                <div class="col-sm-12 col-md-10 col-form-label">
+                    @Html.DisplayFor(model => model.MoTa)
+                </div>
+            </div>
+            <div class="form-group row">
+                <b class="col-sm-12 col-md-2 col-form-label">Hiệu lực</b>
+                <div class="col-sm-12 col-md-10 col-form-label">
+                    <label class="congtacduyet">
+                        <input @(Convert.ToBoolean(Model.HieuLuc) == true ? "checked='checked'" : string.Empty)
+                               type="checkbox" name="status" value="@(Model.HieuLuc)">
+                        <button type="submit" name="MaVoucher" value="@(Model.MaVoucher)" class="keocongtac round"></button>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group row">
+                <b class="col-sm-12 col-md-2 col-form-label">Loại voucher</b>
+                <div class="col-sm-12 col-md-10 col-form-label">
+                    @Html.DisplayFor(model => model.LoaiVoucher)
+                </div>
+            </div>
+            <div class="form-group row">
+                <b class="col-sm-12 col-md-2 col-form-label">Điều kiện</b>
+                <div class="col-sm-12 col-md-10 col-form-label">
+                    @Html.DisplayFor(model => model.DieuKien)
+                </div>
+            </div>
+            <div class="form-group row">
+                <b class="col-sm-12 col-md-2 col-form-label">Ngày kích hoạt</b>
+                <div class="col-sm-12 col-md-10 col-form-label">
+                    @Html.DisplayFor(model => model.NgayKichHoat)
+                </div>
+            </div>
+            <div class="form-group row">
+                <b class="col-sm-12 col-md-2 col-form-label">Ngày kết thúc</b>
+                <div class="col-sm-12 col-md-10 col-form-label">
+                    @Html.DisplayFor(model => model.NgayKetThuc)
+                </div>
+            </div>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.MaVoucher }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+        </div>
+    </div>
+</div>

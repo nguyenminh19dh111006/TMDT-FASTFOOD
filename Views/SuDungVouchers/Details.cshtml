@@ -1,0 +1,61 @@
+﻿@model QuanLyFastFood.Models.Voucher
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="ht__bradcaump__area bg-image--6" style="background-image:url(../Assets/images/banner/banner4.jpg)">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="bradcaump__inner text-center">
+                    <h2 class="bradcaump-title">Chi tiết mã giảm giá</h2>
+                    <nav class="bradcaump-content">
+                        <a class="breadcrumb_item" href="index.html">Trang chủ</a>
+                        <span class="brd-separetor">/</span>
+                        <span class="breadcrumb_item active">Chi tiết mã giảm giá</span>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- End Bradcaump area -->
+<div class="page-blog-details section-padding--lg bg--white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-12">
+                <div class="blog-details content">
+                    <article class="blog-post-details">
+                        <div class="post_wrapper">
+                            <div class="post_header">
+                                <h2>@Html.DisplayFor(model => model.MoTa)</h2>
+                                <div class="blog-date-categori">
+                                    <ul>
+                                        <li>Hạn sử dụng: @Html.DisplayFor(model => model.NgayKetThuc)</li>
+                                        <li><a href="#" title="Note">@Html.DisplayFor(model => model.DieuKien)</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="post_content">
+                                <p>
+                                    Loại voucher: @Html.DisplayFor(model => model.LoaiVoucher)
+                                </p>
+                                <p>
+                                    Điều kiện: @Html.DisplayFor(model => model.DieuKien)
+                                </p>
+                                <p>
+                                    Ngày kích hoạt: @Html.DisplayFor(model => model.NgayKichHoat)
+                                </p>
+                                <p>
+                                    Ngày kết thúc: @Html.DisplayFor(model => model.NgayKetThuc)
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

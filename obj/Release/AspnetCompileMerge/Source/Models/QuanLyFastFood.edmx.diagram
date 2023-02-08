@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bc03e11106584b7ca6d7fb38b83e4e36" Name="Diagram1">
+        <EntityTypeShape EntityType="QuanLyFastFoodModel.CauHinh" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyFastFoodModel.ChiTietDonHang" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyFastFoodModel.ChuyenMuc" Width="1.5" PointX="5.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyFastFoodModel.DonHang" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyFastFoodModel.KhachHang" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyFastFoodModel.LoaiSP" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyFastFoodModel.NguoiDung" Width="1.5" PointX="5.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyFastFoodModel.SanPham" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyFastFoodModel.TinTuc" Width="1.5" PointX="8" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="QuanLyFastFoodModel.FK_ChiTietDonHang_DonHang" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyFastFoodModel.FK_ChiTietDonHang_SanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyFastFoodModel.FK_TinTuc_ChuyenMuc" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyFastFoodModel.FK_DonHang_KhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyFastFoodModel.FK_SanPham_LoaiSP" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QuanLyFastFoodModel.Voucher" Width="1.5" PointX="8.375" PointY="9" />
+        <AssociationConnector Association="QuanLyFastFoodModel.FK_Voucher_DonHang" />
+        <EntityTypeShape EntityType="QuanLyFastFoodModel.sysdiagram" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="QuanLyFastFoodModel.HinhThucThanhToan" Width="1.5" PointX="0.75" PointY="10.25" />
+        <AssociationConnector Association="QuanLyFastFoodModel.FK_ThanhToan_DonHang" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

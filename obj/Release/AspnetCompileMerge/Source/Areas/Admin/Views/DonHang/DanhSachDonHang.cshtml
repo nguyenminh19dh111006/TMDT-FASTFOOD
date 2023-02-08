@@ -1,0 +1,101 @@
+﻿@model IEnumerable<QuanLyFastFood.Models.DonHang>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pd-ltr-20 xs-pd-20-10">
+    <div class="min-height-200px">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="title">
+                        <h4>Danh sách đơn hàng</h4>
+                    </div>
+                    <nav aria-label="breadcrumb" role="navigation">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="@Url.Action("Index","Default")">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Danh sách đơn hàng</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- Simple Datatable start -->
+        <div class="card-box mb-30">
+            <div class="pd-20">
+                <h4 class="text-blue h4">Danh sách đơn hàng</h4>
+            </div>
+            <div class="pb-20">
+                <table class="data-table table stripe hover container">
+                    <thead>
+                        <tr>
+                            <th class="table-plus">Tên khách hàng</th>
+                            <th>Ngày đặt hàng</th>
+                            <th>Tên người nhận</th>
+                            <th class="datatable-nosort">Trạng Thái</th>
+                            <th class="datatable-nosort">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="table-plus">
+                                    <div class="dropdown">
+                                        <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                                            <i class="icon-copy fa fa-chevron-down" style="color: black; font-size: small; padding-bottom: 11px"></i>
+                                        </a>
+                                        @item.KhachHang.Ten
+                                        <div class="dropdown-menu dropdown-menu-left">
+                                            <div class="dropdown-item"><b>Phí giao hàng:</b> @item.PhiGiao</div>
+                                            <div class="dropdown-item"><b>Địa chỉ:</b> @item.DiaChi</div>
+                                            <div class="dropdown-item"><b>Điện thoại:</b> @item.DienThoai</div>
+                                            <div class="dropdown-item"><b>Email:</b> @item.Email</div>
+                                            <div class="dropdown-item">
+                                                <b>Voucher:</b>
+                                                @if (item.ApDungVoucher == null)
+                                                {<span>Không có</span> }
+                                                else
+                                                { <span>@item.ApDungVoucher</span>}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>@item.NgayDatHang</td>
+                                <td>@item.TenNguoiNhan</td>
+                                @if (item.TrangThai == false)
+                                {
+                                    <th style="color:red">Chưa thanh toán</th>
+                                }
+                                else
+                                {
+                                    <th style="color:green">Đã thanh toán</th>
+                                }
+                                <td>
+                                    <div class="dropdown">
+                                        <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                                            <i class="dw dw-more"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                            <a class="dropdown-item" href="@Url.Action("XemChiTiet","DonHang", new { ma = item.Ma })"><i class="dw dw-eye"></i>Xem chi tiết đơn hàng</a>
+                                            <a class="dropdown-item" href="@Url.Action("DeleteConfirmed","DonHang", new { id = item.Ma })"><i class="dw dw-delete-3"></i>Delete</a>
+                                        </div>
+                                    </div>
+                                    @using (Html.BeginForm("DuyetThanhToan", "DonHang"))
+                                    {
+                                        <label class="congtacduyet">
+                                            <input @(Convert.ToBoolean(item.TrangThai) == true ? "checked='checked'" : string.Empty) type="checkbox" name="status" value="@(item.TrangThai)">
+
+                                            <button type="submit" name="MaDH" value="@(item.Ma)" class="keocongtac round"></button>
+                                        </label>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,105 @@
+﻿@model QuanLyFastFood.Models.NguoiDung
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pd-ltr-20 xs-pd-20-10">
+    <div class="min-height-20px">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="title">
+                        <h4>Thông tin người dùng</h4>
+                    </div>
+                    <nav aria-label="breadcrumb" role="navigation">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="@Url.Action("Index","Default")">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Thông tin người dùng</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pd-20 card-box height-100-p">
+        <div class="profile-photo">
+            <a href="modal" data-toggle="modal" data-target="#modal" class="edit-avatar"><i class="fa fa-pencil"></i></a>
+            <img src="@Model.Anh" alt="" class="avatar-photo">
+            <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true" style="display: none;">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body pd-5">
+                            <div class="img-container">
+                                <img id="image" src="@Model.Anh" alt="Picture" class="">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" value="Update" class="btn btn-primary">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h5 class="text-center h5 mb-0">@Model.Ten</h5>
+        <p class="text-center text-muted font-14">@Model.TenDangNhap</p>
+        <div class="profile-info">
+            <div class="clearfix">
+                <div class="pull-left">
+                    <h4 class="text-blue h4">Thông tin người dùng</h4>
+                </div>
+            </div>
+            <div class="form-group row">
+                <b class="col-sm-12 col-md-2 col-form-label">Giới tính</b>
+                <div class="col-sm-12 col-md-10 col-form-label">
+                    @Model.GioiTinh
+                </div>
+            </div>
+            <div class="form-group row">
+                <b class="col-sm-12 col-md-2 col-form-label">Email</b>
+                <div class="col-sm-12 col-md-10 col-form-label">
+                    @Model.Email
+                </div>
+            </div>
+            <div class="form-group row">
+                <b class="col-sm-12 col-md-2 col-form-label">Số điện thoại</b>
+                <div class="col-sm-12 col-md-10 col-form-label">
+                    @Model.DienThoai
+                </div>
+            </div>
+            <div class="form-group row">
+                <b class="col-sm-12 col-md-2 col-form-label">Tên thể loại</b>
+                <div class="col-sm-12 col-md-10 col-form-label">
+                    @Model.DiaChi
+                </div>
+            </div>
+            <div class="form-group row">
+                <b class="col-sm-12 col-md-2 col-form-label">Quyền sử dụng</b>
+                <div class="col-sm-12 col-md-10 col-form-label">
+                    @Model.Quyen
+                </div>
+            </div>
+        </div>
+        <div class="profile-social">
+            <h5 class="mb-20 h5 text-blue">Social Links</h5>
+            <ul class="clearfix">
+                <li><a href="#" class="btn" data-bgcolor="#3b5998" data-color="#ffffff" style="color: rgb(255, 255, 255); background-color: rgb(59, 89, 152);"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#" class="btn" data-bgcolor="#1da1f2" data-color="#ffffff" style="color: rgb(255, 255, 255); background-color: rgb(29, 161, 242);"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#" class="btn" data-bgcolor="#007bb5" data-color="#ffffff" style="color: rgb(255, 255, 255); background-color: rgb(0, 123, 181);"><i class="fa fa-linkedin"></i></a></li>
+                <li><a href="#" class="btn" data-bgcolor="#f46f30" data-color="#ffffff" style="color: rgb(255, 255, 255); background-color: rgb(244, 111, 48);"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="#" class="btn" data-bgcolor="#3d464d" data-color="#ffffff" style="color: rgb(255, 255, 255); background-color: rgb(61, 70, 77);"><i class="fa fa-dropbox"></i></a></li>
+                <li><a href="#" class="btn" data-bgcolor="#db4437" data-color="#ffffff" style="color: rgb(255, 255, 255); background-color: rgb(219, 68, 55);"><i class="fa fa-google-plus"></i></a></li>
+                <li><a href="#" class="btn" data-bgcolor="#bd081c" data-color="#ffffff" style="color: rgb(255, 255, 255); background-color: rgb(189, 8, 28);"><i class="fa fa-pinterest-p"></i></a></li>
+                <li><a href="#" class="btn" data-bgcolor="#00aff0" data-color="#ffffff" style="color: rgb(255, 255, 255); background-color: rgb(0, 175, 240);"><i class="fa fa-skype"></i></a></li>
+            </ul>
+        </div>
+        <div class="profile-skills">
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Ma }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+        </div>
+    </div>
+</div>

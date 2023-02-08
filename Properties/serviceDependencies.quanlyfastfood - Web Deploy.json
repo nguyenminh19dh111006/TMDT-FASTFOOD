@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/quanlyfastfood/databases/QuanLyFastFood",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:tcp:quanlyfastfood.database.windows.net,1433",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}

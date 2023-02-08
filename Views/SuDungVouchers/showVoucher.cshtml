@@ -1,0 +1,97 @@
+﻿@model PagedList.IPagedList<QuanLyFastFood.Models.Voucher>
+@using PagedList.Mvc;
+@using QuanLyFastFood.Models;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="ht__bradcaump__area bg-image--4" style="background-image:url(../Assets/images/banner/banner4.jpg)">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="bradcaump__inner text-center">
+                    <h2 class="bradcaump-title">Voucher</h2>
+                    <nav class="bradcaump-content">
+                        <a class="breadcrumb_item" href="@Url.Action("Index","Home")">Trang chủ</a>
+                        <span class="brd-separetor">/</span>
+                        <span class="breadcrumb_item active">Voucher</span>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Bradcaump area -->
+<!-- Start Blog Area -->
+<div class="page-blog bg--white section-padding--lg blog-sidebar right-sidebar">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-12">
+                <div class="blog-page">
+                    <div class="page__header">
+                        <h2>Tất cả mã giảm giá</h2>
+                    </div>
+                    @foreach (var item in Model)
+                    {
+                        <article class="blog__post d-flex flex-wrap">
+                            <div style="flex-basis: 20%;">
+                                <a href="@Url.Action("Details", "SuDungVouchers", new { id = item.MaVoucher })">
+                                    <img src="../Assets/images/foodVoucherImages.jpg" alt="voucher_images">
+                                </a>
+                            </div>
+                            <div class="content">
+                                <h4><a href="@Url.Action("Details", "SuDungVouchers", new { id = item.MaVoucher })">@item.MoTa</a></h4>
+                                <ul class="post__meta">
+                                    @{ DateTime timeEnd = DateTime.Parse(item.NgayKetThuc.ToString());}
+                                    <li>Hạn sử dụng: @timeEnd.ToString("yyyy-MM-dd")</li>
+                                </ul>
+                                <p>
+                                    <button onclick="copyFunction()">Sử dụng ngay: </button> <input type="text" value="@item.MaVoucher" id="chonVoucher" readonly> <br />
+                                    @item.DieuKien
+                                </p>
+                                <div class="blog__btn">
+                                    <a href="@Url.Action("Details", "SuDungVouchers", new { id = item.MaVoucher })">read more</a>
+                                </div>
+                            </div>
+                        </article>
+                    }
+
+
+                </div>
+                @Html.PagedListPager(Model, page => Url.Action("ShowVoucher", new { page, ma = ViewBag.Ma }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions() { HttpMethod = "Get", UpdateTargetId = "sp_area" }))
+            </div>
+            <div class="col-lg-3 col-12 md-mt-40 sm-mt-40">
+                <div class="wn__sidebar">
+                    <!-- Start Single Widget -->
+                    <aside class="widget search_widget">
+                        <h3 class="widget-title">Tìm kiếm</h3>
+                        <form action="#">
+                            <div class="form-input">
+                                <input type="text" placeholder="Search...">
+                                <button><i class="fa fa-search"></i></button>
+                            </div>
+                        </form>
+                    </aside>
+                    <!-- End Single Widget -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Blog Area -->
+<script>
+function copyFunction() {
+  // Get the text field
+  var copyText = document.getElementById("chonVoucher");
+
+  // Select the text field
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+
+  // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.value);
+
+  // Alert the copied text
+  alert("Đã chọn vào mã voucher: " + copyText.value);
+}
+</script>
